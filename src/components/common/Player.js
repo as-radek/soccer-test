@@ -13,14 +13,14 @@ class Player extends Component {
 
     }
 
-    shouldComponentUpdate() {
-
+    shouldComponentUpdate(nextProps, nextState) {
+        return ((this.props.x !== nextProps.x) || (this.props.y !== nextProps.y));
     }
 
     render() {
 
         return (
-            <View style={styles.playerStyle}>
+            <View style={[styles.playerStyle, {bottom: this.props.y, left: this.props.x}, this.props.style]}>
                 <Text style={styles.playerIdStyle}>{this.props.id}</Text>
             </View>
         );
